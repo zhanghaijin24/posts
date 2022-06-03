@@ -1,0 +1,75 @@
+---
+title: "emacs"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+
+* youtuber
+** bugswriter github
+** EmacsCast(youtuber)
+*** config--https://github.com/freetonik/emacs-dotfiles
+Castemacs(based on my config,but richer and more user friendly)
+https://github.com/freetonik/castlemacs
+* 陈斌 emacs 
+https://github.com/redguardtoo/emacs.d
+https://github.com/purcell/emacs.d
+
+* yasnippet 
+
+M-x yas-new-snippet
+#+BEGIN_SRC emacs-lisp
+(require 'yasnippet)
+(yas-global-mode 1)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets" yasnippet-snippets-dir))
+#+END_SRC
+
+* replace words in a region using iedit
+https://emacs.stackexchange.com/questions/13466/how-to-replace-words-in-a-region-using-iedit
+narrow-to-region (C-x n n)
+widen (C-x n w)
+
+
+* html face 
+https://stackoverflow.com/questions/39111683/change-html-tag-color-in-emacs-web-emmet-helm-mode
+
+customize-face
+#+BEGIN_SRC emacs-lisp
+hl-line
+#+END_SRC
+
+* DasAutooo 
+** HTML速成
+https://developer.mozilla.org/en_US/docs/Web/HTML/Element
+
+https://www.youtube.com/watch?v=piJJ83jI2IU
+
+https://www.youtube.com/watch?v=piJJ83jI2IU
+
+https://www.youtube.com/watch?v=piJJ83jI2IU
+
+* emacs emmet补全
+https://blog.csdn.net/weixin_33860722/article/details/92438083
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'web-mode-hook 'emmet-mode)
+#+END_SRC
+* emacs html lsp  
+
+npm install -g less does not work: EACCES: permission denied
+
+ mkdir ~/.npm-global
+
+npm config set prefix '~/.npm-global'
+
+nvim ~/.profile
+#+BEGIN_SRC emacs-lisp
+export PATH=~/.npm-global/bin:$PATH
+#+END_SRC
+
+source ~/.profile
+
+npm install -g vscode-html-languageserver-bin
+

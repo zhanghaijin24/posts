@@ -1,0 +1,363 @@
+% \documentclass[fontset=windows]{ctexart}
+\documentclass{ctexart}
+
+\usepackage{tikz}
+\usetikzlibrary[mindmap, backgrounds, calc]
+
+\begin{document}
+
+\section{荣府}
+
+\subsection{贾母}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4cm,
+    sibling angle = 50
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 31
+  },
+  level 3/.append style = {
+    concept color = blue!10,
+    sibling angle = 30
+  },
+  level 4/.append style = {
+    concept color = red!10
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  } 
+  ]
+  \node {贾母}[scale=0.84]
+  child { node {王夫人/贾政}
+    child { node {元春}}
+    child { node {贾珠/李纨}[scale=0.95]
+      child { node {贾兰}}
+      child { node {丫头}
+        child { node {素云}}
+        child { node {碧月}}
+      }
+    }
+    child { node {宝玉}}
+  } 
+  child { node {赵姨娘/贾政}[scale=0.85]
+    child { node {探春}
+      child { node {侍书}}
+      child { node {翠墨}}
+    }
+    child { node {贾环}}}
+  child { node {周姨娘/贾政}}
+  child { node {刑夫人/贾赦}[scale=0.85]
+    child { node {王熙凤/贾琏}
+      child { node {平儿}}
+      child { node {丰儿}}
+      child { node {小红}}
+    }
+    child { node {迎春}
+      child {node {司棋}}
+      child { node {绣桔}}
+    }} 
+  child { node {贾敏/林如海}
+    child { node {林黛玉}[scale=0.75]
+      child { node {紫鹃}}
+      child { node {雪雁}}
+      child { node {春纤}}
+    }} 
+  child { node {史鼐}
+    child { node {史湘云}[scale=0.95]
+      child { node {翠缕}}
+      child { node {周奶娘}}
+    }}
+  child { node {丫头}
+    child { node {鸳鸯}}
+    child { node {鹦鹉}}
+    child { node {琥珀}}
+    child { node {珍珠}}
+  }
+  ;
+
+\end{tikzpicture}
+
+\subsection{王夫人}
+
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 40
+  },
+  level 3/.append style = {
+    concept color = blue!10,
+    sibling angle = 50
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  } 
+  ]
+  \node {王夫人}[scale=0.85]
+  child { node{贾宝玉}}
+  child { node {李纨/贾珠}
+    child { node {贾兰}}}
+  child { node {丫鬟}
+    child { node {金钏儿}}
+    child { node {彩云}}
+    child { node {彩霞}}
+    child { node {绣鸾}}
+    child { node {绣凤}}
+  } 
+  child { node {管家}
+    child { node {周瑞家}[scale=1.0]
+      child { node {冷子兴}}
+    }
+  }
+  ;
+\end{tikzpicture}
+
+\subsection{邢夫人}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 120
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  level 4/.append style = {
+    sibling angle = 60
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+  \node {邢夫人}[scale=0.95]
+  child { node {王熙凤}
+    child { node {儿女}
+      child { node {大姐儿}}
+      child { node {巧姐儿}}
+    }
+    child { node {丫鬟}
+      child { node {平儿}}
+      child { node {丰儿}}
+    }
+    child { node {管理}
+      child { node {来旺儿}}
+      child { node {周氏} child { node {贾芹}}}}
+    child { node {亲人}
+      child { node {王仁}}}
+  }
+  child { node {贾琏}
+    child { node {多浑虫}}
+    child { node {多姑娘儿}}
+    child { node {管理}
+      child { node {五嫂子}
+        child { node[minimum size=1.2cm] {卜世仁}
+          child { node {银姐}}}
+        child { node {贾芸} child { node {倪二}}}}}
+  }
+  child { node {迎春}
+    child { node {司棋}}
+    child { node {绣桔}}
+  }
+ 
+;
+\end{tikzpicture}
+
+\subsection{贾宝玉}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 30
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+  \node {贾宝玉}[scale=0.95]
+  child { node {丫鬟}
+    child { node {袭人}}
+    child { node {晴雯}}
+    child { node {茜雪}}
+    child { node {麝月}}
+    child { node {秋纹}}
+  }
+  child { node {丫鬟}
+    child { node {绮霞}}
+    child { node {碧痕}}
+    child { node {檀云}}
+    child { node {小红}
+      child { node {隹蕙}}
+      child { node {坠儿}}}
+  } 
+  child { node {奶妈}
+    child { node {李嬷嬷}
+      child { node {李贵}} 
+    } 
+  }
+  child { node {小厮}
+    child { node {茗烟}}
+    child { node {焙茗}}
+    child { node {锄药}}
+    child { node {双瑞}}
+    child { node {双寿}}
+  }
+  child { node {干娘}
+    child { node {马道婆}
+      child { node {南安郡王太妃}}
+      child { node {锦田侯}}}}
+;
+\end{tikzpicture}
+
+\section{薛姨妈}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 120
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 60
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+  \node {薛姨妈}[scale=0.85]
+  child { node {薛宝钗} child { node {莺儿}}}
+  child { node {薛蟠}
+    child { node {利益}
+      child { node {冯紫英}
+        child { node[minimum size=2cm,concept color=red!30] {冯唐}}}}
+    child { node {唱曲儿}
+      child { node {詹光}}
+      child { node {程日兴}}
+      child { node {胡斯来}}
+      child { node {单聘仁}}}
+    child { node {学友}
+      child { node {金荣}}
+      child { node {贾瑞}}
+      child { node {香怜}}
+      child { node {玉爱}}}}
+  child { node {丫鬟}
+    child { node {金钏儿}}
+    child { node {香菱}
+      child { node {臻儿}}
+    }
+    child { node {同喜}}
+    child { node {同贵}}
+  }
+;
+\end{tikzpicture}
+
+
+\section{宁府}
+\subsection{尤氏}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+  \node {尤氏}
+  child { node {儿女}
+    child { node {秦氏}  child { node {秦钟}}
+    }
+  }
+  child { node {亲属} child { node {贾蔷}}}
+  child { node[minimum size=4cm] {惜春}
+    child { node {入画}}
+    child { node {彩屏}}
+  }
+;
+\end{tikzpicture}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

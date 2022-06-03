@@ -1,0 +1,66 @@
+---
+title: "server"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+
+#+STARTUP: showall hidestars 
+
+* my server
+** 阿里云
+ssh david@101.201.197.193 -p 10086
+密码：2 
+
+** 腾讯云
+ssh david@192.144.237.214 -p 10086
+密码：2
+
+** dedipath
+ssh root@5.253.235.24 
+密码：zhj229154
+** dedipath
+网址：https://www.dedipath.com
+用户名：1171892570@qq.com
+密码：zhj229154
+
+** vultr
+用户名：1171892570
+密码：Zhj199002044819
+
+** google email
+sse78424@gmail.com 
+密码： zhj229154
+
+** cloudflare
+用户名：1171892570
+密码：@Zhj229154
+
+** hostinger
+用户名：google账号
+
+域名：david24.xyz
+
+** heroku
+用户名：sse78424@gmail.com
+密码：zhj229154@
+
+* daili
+
+www.mdoos.pw  
+** free proxy
+https://v2rayse.com   
+
+* apple American
+用户名：zhanghaijin24@163.com
+密码：Da1171892570
+
+
+* google
+  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
+
+* 订阅
+  http://bit.ly/3qsFTLd
+
+
+
+

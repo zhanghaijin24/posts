@@ -1,0 +1,98 @@
+---
+title: "lenovo-manjaro"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+#+STARTUP: overview
+* manjaro配置源
+sudo nvim /etc/pacman.conf
+#+BEGIN_SRC emacs-lisp
+[archlinuxcn]
+SigLevel = Never
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+#+END_SRC
+
+** 改到国内镜像源
+sudo pacman-mirrors -c China
+
+sudo pacman -Syyu
+
+* 安装以及配置i3
+
+sudo pacman -S i3
+
+***fzf配置rg***
+- sudo pacman -S ripgrep
+- yay -S the_silver_searcher
+
+* 配置fzf补全zsh
+nvim ~/.config/zsh/fzf.zsh
+#+BEGIN_SRC emacs-lisp
+source ~/.fzf/shell/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
+#+END_SRC
+
+nvim .zshrc
+#+BEGIN_SRC emacs-lisp
+source ~/.config/zsh/fzf.zsh
+#+END_SRC
+
+
+* 配置zsh以及ohmyzsh
+sudo pacman -S zsh
+
+*** 更改默认shell为zsh
+sudo nvim /etc/passwd
+#+BEGIN_SRC emacs-lisp
+david:x:1000:1000::/home/david:/bin/zsh
+#+END_SRC
+
+
+
+nvim ~/.zshrc
+#+BEGIN_SRC emacs-lisp
+plugins=(git
+	zsh-syntax-highlighting	
+	zsh-autosuggestions
+	)
+#+END_SRC
+
+
+* Archlinux安装中文输入法
+sudo pacman -S fcitx-im fcitx-configtool fcitx-googlepinyin
+
+sudo nvim ~/.xprofile
+#+BEGIN_SRC emacs-lisp
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+#+END_SRC
+
+* 最简单跨平台文件传输神器
+- snapdrop.net
+
+* nvim文件使用git同步gitee里面文件
+git fetch origin master:tmp
+
+git merge tmp
+
+git branch -d tmp
+
+* manjaro设置终端代理
+sudo nvim /etc/proxychains.conf
+#+BEGIN_SRC emacs-lisp
+socks5 	127.0.0.1 1089
+#+END_SRC
+
+curl cip.cc
+proxychains curl cip.cc
+
+* manjaro修改esc和Capslock位置
+nvim .Xmodmap
+#+BEGIN_SRC emacs-lisp
+!把esc映射成Caps
+clear lock
+keycode 66 = Escape NoSymbol NoSymbol
+keycode 9 = Caps_Lock NoSymbol Caps_Lock
+#+END_SRC
+

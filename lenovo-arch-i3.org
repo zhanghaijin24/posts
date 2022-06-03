@@ -1,0 +1,228 @@
+
+---
+title: "lenovo-arch-i3"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+#+STARTUP: overview
+* Install archlinux TheCW
+** static 4G wired internet
+   https://www.jianshu.com/p/b1e4b99032ef
+#+BEGIN_SRC  emacs-lisp
+ip address add 10.10.10.124/24 dev enp4s0
+
+ip route add default via 10.10.10.4 
+#+END_SRC   
+** bootloader  
+Could not prepare boot variable : No space left on device
+grub-install：error：efibootmgr failed to register the boot entry：input/output error
+#+BEGIN_SRC  emacs-lisp
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removabl
+#+END_SRC
+sudo nvim /etc/default/grub
+#+BEGIN_SRC  emacs-lisp
+GRUB_DISABLE_OS_PROBER=false 
+#+END_SRC
+
+* Using dual monitor
+https://clay-atlas.com/blog/2020/10/23/linux-cn-xrandr-adjust-resolution-screen-settings/
+
+LVDS1 is my laptop,HDMI1 is monitor.
+xrandr --output LVDS1 --auto --output HDMI1 --auto
+
+xrandr --output LVDS1 --auto --output HDMI1 --off 
+
+xrandr --output LVDS1 --left-of HDMI1
+
+xrandr --output LVDS1 --right-of HDMI1
+
+xrandr --output LVDS1 --same-as HDMI1
+
+pacmd set-card-profile 1 output:hdmi-stereo
+
+* Sound via HDMI on Arch Linux(how do I enable HDMI audio i3)
+https://unix.stackexchange.com/questions/390907/sound-via-hdmi-on-arch-linux
+
+sudo pacman -S pavucontrol
+
+https://www.whatsdoom.com/posts/2015/12/01/configure-pulseaudio-output-via-command-line/
+
+pacmd set-card-profile 1 output:hdmi-stereo
+
+
+* git everyday
+** aliyun
+git config --global user.name "zhanghaijin24"
+
+git add .
+
+git commit -m "first commit"
+
+git push origin master
+
+nvim ~/emacs/.git/config
+
+[remote "origin"]
+url = ssh://git@101.201.197.193:10086/home/git/emacs.git
+** github
+ git remote add github https://github.com/zhanghaijin24/emacs.git
+ 
+ git push -u  github master
+ 
+ [remote "github"]
+	url = https://github.com/zhanghaijin24/emacs.git
+        
+* git repository
+ssh git@101.201.197.193 -p 10086  password:3
+
+mkdir myconfig.git
+
+cd myconfig.git
+
+git init --bare
+
+** local
+[remote "origin"]
+	url = ssh://git@101.201.197.193:10086/home/git/myconfig.git
+
+git push aliyun master
+
+git clone  ssh://git@101.201.197.193:10086/home/git/myconfig.git
+
+* connecting wifi
+nmcli dev con wlp3s0 --ask
+
+sudo nmcli dev wifi connect CMCC-bnNS password ft2cim7w
+
+* polybar arch i3
+https://eonun.com/posts/af56b769/
+
+nvim ~/.config/i3/config
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+https://eonun.com/posts/5f24aa49/#more
+** i3 terminal
+   sudo pacman -S xfce4-terminal
+* mount USB drives from command line on i3wm
+lsblk -f
+sudo pacman -S ntfs-3g
+sudo mkdir /mnt/usb
+sudo mount /dev/sdc1 /mnt/usb
+
+Dolphin
+
+
+* qv2ray proxy
+https://archlinuxstudio.github.io/ArchLinuxTutorial/#/advanced/transparentProxy
+
+* git aliyun nginx hugo
+** lenovo i3
+hugo new site quickstart
+
+cd quickstart
+
+git init
+
+cd themes/
+
+git clone https://github.com/matcornic/hugo-theme-learn.git
+
+cd ..
+
+echo theme = \"hugo-theme-learn\" >> config.toml
+
+cd quickstart/content
+
+git clone ssh://git@101.201.197.193:10086/home/git/posts.git
+
+cd .. # going to quickstart directory
+
+hugo -D 
+
+git clone ssh://git@101.201.197.193:10086/home/git/zhanghaijin24.github.io.git
+
+cp -rf ./public/* ../zhanghaijin24.github.io/docs/
+
+cd ../zhanghaijin24.github.io
+
+git add .
+
+git commit -m ""
+
+git push origin master
+
+** aliyun
+ssh david@101.201.197.193 -p 10086
+
+cd /www/wwwroot/hugo.cn/zhanghaijin24.github.io
+
+sudo git pull --rebase origin master
+
+* github
+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
+
+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
+
+* mount usb dolphin
+
+https://linuxconfig.org/howto-mount-usb-drive-in-linux
+
+sudo pacman -S ntfs-3g
+
+sudo  fdisk -l
+
+sudo mkdir /media/usb-drive
+
+sudo mount /dev/sdc1 /media/usb-drive/
+
+mount | grep sdc1
+
+sudo umount /media/usb-drive
+
+ls -l /dev/disk/by-uuid/*
+
+sudo nvim /etc/fstab
+
+/dev/disk/by-uuid/1CDC5705DC56D91A    /media/usb-drive         vfat   0   0
+
+* iphone手机和linux电脑进行通信
+iphone上面下载AirMore
+浏览器里面：web.airmore.cn
+
+* 最简单跨平台文件传输神器
+snapdrop.net
+
+* Install manjaro
+** bootloader grub
+http://192.144.237.214/images/2021/12/26/manjaro-bootloader.jpg
+  1.从usb-driver 进入manjaro硬盘
+  
+#+BEGIN_SRC  emacs-lisp
+  sudo mount /dev/sda1 /mnt
+  sudo mount /dev/sda1 /mnt/boot/efi
+  sudo manjaro-chroot /mnt
+
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck --force --no-nvram --removable
+
+  grub-mkconfig -o /boot/grub/grub.cfg
+#+END_SRC   
+* wallpaper i3
+  sudo pacman -S variety feh
+  sudo pacman -S the_silver_searcher
+* manjaro qq tim wechat
+  
+https://github.com/vufa
+
+  
+https://www.cnblogs.com/cirry/p/arch-install-step-three.html#安装git  
+  
+
+* file copy paste to QQ
+  DEADLINE: <2022-01-16 日> SCHEDULED: <2022-01-16 日>
+  https://blog.csdn.net/r8l8q8/article/details/103889972
+  sudo pacman -S mate-extra
+  #+BEGIN_SRC  emacs-lisp
+bindsym $mod+m exec caja
+  #+END_SRC
+  
+

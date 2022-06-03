@@ -1,0 +1,28 @@
+/*Now the CSS*/
+* {margin: 0; padding: 0;font-size: 16px!important;}
+
+.tree ul{
+    padding-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.tree li::before, .tree li::after {
+    content: '';
+    position: absolute; top: 0; right: 50%;
+    bottom-top: 2px solid #ccc;
+    width: 50%; height: 20px;
+}
+
+.tree li::after{
+    right: auto; left: 50%;
+    border-left: 2px solid #ccc;
+}
+
+.tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+}
+
+.tree li:only-child{ padding-top: 0;}

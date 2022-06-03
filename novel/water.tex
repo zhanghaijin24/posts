@@ -1,0 +1,396 @@
+\documentclass{ctexart}
+
+\usepackage{tikz}
+\usetikzlibrary[mindmap, backgrounds, calc]
+
+\begin{document}
+\section{山寨职事}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 90
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+  \node (0) [grow = down]{晁盖、宋江、吴用}
+  [clockwise from = -90]
+  child 
+  {
+    node (3) {李俊、李逵}
+    [clockwise from = -65]
+    child {node {马麟}}
+    child {node {欧鹏}}
+  }
+  child
+  {
+    node (1) {花荣、秦明}
+    [clockwise from = -155]
+    child {node {吕方}}
+    child {node {郭盛}}
+  }
+  child 
+  {
+    node (4) {张横、张顺}
+    [clockwise from = -235]
+    child {node {孙立}}
+    child {node {白胜}}
+  }
+  child 
+  {
+    node (2) {林冲、戴宗}
+    [clockwise from = 25]
+    child {node {邓飞}}
+    child {node {杨林}}
+  }
+  ;
+
+  \node[annotation] at ($(0.south) + (1.3,0.3)$)
+  {
+   \LARGE{山寨内} 
+ };
+  \node[annotation] at ($(1.south) + (0,-0.3)$)
+  {
+   \LARGE{山左寨} 
+ };
+  \node[annotation] at ($(2.south) + (0,-0.3)$)
+  {
+   \LARGE{山右寨} 
+ };
+  \node[annotation] at ($(3.south) + (1.3,0.3)$)
+  {
+   \LARGE{山前} 
+ };
+    \node[annotation] at ($(4.south) + (1.3,0.3)$)
+  {
+   \LARGE{山后} 
+ };
+\end{tikzpicture}
+
+\section{打祝家庄}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 120
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+  every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+  \node {\LARGE{祝家庄}}
+  child
+  {
+    node (1) {\Large{宋江、马麟、邓飞、欧鹏、王矮虎}}
+  }
+  child
+  {
+    node (2) {\Large{林冲、花荣、穆弘、李逵}}
+  }
+  child 
+  {
+    node (3) {\Large{戴宗、秦明、杨雄、石秀、李俊、张横、张顺、白胜}}
+  }
+  ;
+
+  \node[annotation] at ($(1.south) + (0,-0.3)$)
+  {
+   \LARGE{先锋} 
+ };
+  \node[annotation] at ($(2.south) + (0,-0.3)$)
+  {
+   \LARGE{策应} 
+ };
+  \node[annotation] at ($(3.south) + (0,-0.3)$)
+  {
+   \LARGE{水路} 
+ };
+    
+\end{tikzpicture}
+\section{登州系：解珍和解宝的亲属关系}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 90
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+  \node (0) [grow = left]{解珍、解宝}
+  [clockwise from = -180]
+  child 
+  {
+    node (1) {孙立}
+    [clockwise from = 90]
+    child {node[yshift=15] (11) {乐大嫂}
+      [clockwise from = 0]
+      child {node (12) {乐和}
+      }
+    }
+  }
+  child
+  [clockwise from = 0]
+  {
+    node (2) {孙新}
+    [clockwise from = -65]
+    child {node (21) {邹渊}
+      child {node {石勇}}
+      child {node {杨林}}
+      child {node {邓飞}}
+    }
+    child {node (22) {邹润}}
+  }
+  child
+  [clockwise from = 180]
+  {
+    node (3) {顾大嫂}
+  }
+  ;
+
+    \node[annotation] at ($(0) + (-2.75,0)$)
+  {
+   {姨表兄弟} 
+ };
+  \node[annotation] at ($(0.south) + (0,-0.7)$)
+  {
+   {姨表兄弟} 
+ };
+  \node[annotation] at ($(0) + (2.75,0)$)
+  {
+   {姑表兄弟} 
+ };
+ \node[annotation] at ($(1.south) + (1.9,-1.5)$ )
+ {
+  {兄弟} 
+};
+ \node[annotation] at ($(2.south) + (2.5,3)$)
+ {
+  {夫妻} 
+};
+ \node[annotation] at ($(1.north) + (-0.5,0.5)$)
+ {
+  {夫妻} 
+};
+ \node[annotation] at ($(11.east) + (0.5,0)$)
+ {
+  {兄妺} 
+};
+ \node[annotation] at ($(12.north) + (1.5,-1.5)$)
+ {
+  {小牢子：送信} 
+};
+ \node[annotation] at ($(21.south) + (-1,0.5)$)
+ {
+  {叔侄} 
+ };
+ \begin{pgfonlayer}{background}
+   \draw [concept connection] (1)
+   edge (2) 
+   (2) edge (3)
+   (0) edge (12)
+   (21) edge (22)
+   ;
+ \end{pgfonlayer}
+   
+\end{tikzpicture}
+
+\section{江州}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+  \node {江州}
+  child 
+  {
+    node (1) {李俊}
+    child {
+      node {童威、童猛}
+      }
+    }
+  child
+  {
+    node (2) {李立}
+  }
+  child
+  {
+    node (3) {张横}
+  }
+  child
+  {
+    node (4) {张顺}  
+  }
+  child
+  {
+    node (5) {穆弘}
+  }
+  child
+  {
+   node (6) {穆春} 
+  }
+  ;
+
+  \node[circle, fill=red!50,grow = down] (b) at (-5,-11) {宋江}
+  [clockwise from = -90]
+  child {
+    node {薛永}
+  }
+  child
+  {
+    node {吴用}
+  }
+  child
+  {
+   node {戴宗} 
+ }
+ child
+ {
+   node {李逵}
+ }
+  ;
+
+\begin{pgfonlayer}{background}
+  \draw [concept connection] (1)
+  edge (2)
+  (3) edge (4)
+  (5) edge (6)
+  ;
+ \end{pgfonlayer}
+ 
+ \node[annotation] at ($(1.south) + (2,-0.25)$)
+ {
+  {\Large{揭阳岭}} 
+};
+ \node[annotation] at ($(3.south) + (0,3.25)$)
+ {
+  {\Large{浔阳江}} 
+};
+ \node[annotation] at ($(5.south) + (-2,1)$)
+ {
+  {\Large{揭阳鎮}} 
+ };
+ 
+\end{tikzpicture}
+\section{青州}
+
+
+\begin{tikzpicture}
+    [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 3cm,
+    sibling angle = 120
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+  \node {青州}
+  child { node {二龙山}
+    child { node {鲁智深}
+      child { node {少华山}
+        child { node {史进}}
+        child { node {朱武}}
+        child { node {陈达}}
+        child { node {杨春}}
+      }
+      child { node {曹正}}}
+    child { node {杨志}}
+    child { node {武松}
+      child {node {施恩}}
+      child {node {张青}}
+      child {node {孙二娘}}
+    }
+  }
+  child { node {桃花山}
+    child { node {李忠}}
+    child { node {周通}}
+  }
+  child { node {白虎山}
+    child { node {孔明}}
+    child { node {孔亮}}
+  }
+  ;
+  
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[fontset=windows]{ctexart}
+
+\usepackage{tikz}
+\usepackage{nicematrix}
+\usepackage{xcolor}
+\usepackage{amsmath}
+%\usepackage{xeCJK}
+%\setCJKmainfont{微软雅黑}
+\usetikzlibrary{graphs, positioning, quotes, shapes.geometric}
+
+\author{张海金}
+\title{动I-CRH380A-2645主机柜安装}
+
+\begin{document}
+\maketitle
+
+\section{方法一}
+\subsection{旧主板}
+\begin{tikzpicture}[node distance=120pt]
+  \node[draw,rounded corners] (旧板) {旧板};
+  \node[draw,right=of 旧板] (系统盘) {系统盘};
+  \node[draw,below=0.5 of 系统盘] (硬盘仓) {硬盘仓};
+  \node[draw,below=0.5 of 硬盘仓] (显示屏电源) {显示屏电源};
+  \node[draw,below=0.5 of 显示屏电源] (显示屏信号) {显示屏信号};
+  \node[draw,below=0.5 of 显示屏信号] (开机键) {开机键};
+  \node[draw,below=0.5 of 开机键] (电源) {电源};
+  \node[draw,below=0.5 of 电源] (触摸屏信号) {触摸屏信号};
+
+  \draw[->] (旧板) -- (系统盘);
+  \draw[->] (旧板) -- (硬盘仓);
+  \draw[->] (旧板) -- (显示屏电源);
+  \draw[->] (旧板) -- (显示屏信号);
+  \draw[->] (旧板) -- (开机键);
+  \draw[->] (旧板) -- (电源);
+  \draw[->] (旧板) -- (触摸屏信号);
+   
+\end{tikzpicture}
+
+\subsection{新主板}
+\begin{tikzpicture}[node distance=180pt]
+  \node[draw,rounded corners] (新板) {新板};
+  \node[draw,right=of 新板] (硬盘仓) {硬盘仓};
+  \node[draw,below=0.5 of 硬盘仓] (显示屏电源) {显示屏电源};
+  \node[draw,below=0.5 of 显示屏电源] (显示屏信号) {显示屏信号};
+  \node[draw,below=0.5 of 显示屏信号] (开机键) {开机键};
+  \node[draw,below=0.5 of 开机键] (电源) {电源};
+  \node[draw,below=0.5 of 电源] (触摸屏信号) {触摸屏信号};
+  \node[draw,below=0.5 of 触摸屏信号] (备用USB、网口、串口) {备用USB、
+    网口、串口};
+
+  \draw[->] (新板) -- (硬盘仓);
+  \draw[->] (新板) -- (显示屏电源);
+  \draw[->] (新板) -- (显示屏信号);
+  \draw[->] (新板) -- (开机键);
+  \draw[->] (新板) -- (电源);
+  \draw[->] (新板) -- (触摸屏信号);
+  \draw[->] (新板) -- (备用USB、网口、串口);
+\end{tikzpicture}
+
+\section{方法二}
+\subsection{旧主板}
+\begin{NiceTabular}{llc}[hvlines]
+  \Block{9-1}{旧主板} & \Block{2-1}{1.硬盘仓} & 电源线4pin-2根\\
+  & & 硬盘sata线-1根 \\
+  & \Block{}{2.显示屏电源} & 1根\\
+  & \Block{}{3.显示屏信号} & 1根\\
+  & \Block{}{4.触摸屏信号} & 1根\\
+  & \Block{}{5.开机键} & 一红一黑靠近电池\\
+  & \Block{}{6.电源线4pin} & 6pin线\\
+  & \Block{2-1}{7.系统盘} & 电源线4pin-1根\\
+  & & 硬盘sata线-1根\\
+  
+\end{NiceTabular}
+
+\subsection{新主板}
+\begin{NiceTabular}{lll}[hvlines]
+  M2 硬盘 & \Block{7-1}{新主板} & 1.硬盘仓\\
+  内存条  & & 2.显示屏电源\\
+  & & 3.显示屏信号\\
+  & & 4.触摸屏信号\\
+  & & 5.备用到USB、网口、串口\\
+  & & 6.开机键\\
+  & & 7.电源\\
+  
+\end{NiceTabular}
+\end{document}

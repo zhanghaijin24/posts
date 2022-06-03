@@ -1,0 +1,537 @@
+---
+title: "git"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+#+STARTUP: overview
+---
+git config --global user.name "zhanghaijin24"
+git config --global user.email "1171892570@qq.com"
+ssh-keygen -t rsa -C "1171892570@qq.com"
+---
+
+* git repository aliyun
+https://blog.csdn.net/weixin_33701251/article/details/87951729
+
+** create git(user) and add SSH
+ 1, adduser -d /home/git -m git
+ 2, chmod 755 /home/git
+ 3, su git
+ 4, mkdir .ssh && chmod 700 .ssh
+ 5, touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+** cp local id_rsa.pub
+***  cd ~/.ssh/
+*** ls ./id_rsa.pub
+***  scp ./id_rsa.pub root@101.201.197.193:/home/git
+
+** aliyun
+*** su git
+*** cd /home/git
+*** cat ./id_rsa.pub >> .ssh/authorized_keys
+** ssh going to aliyun
+*** ssh -v git@101.201.197.193
+
+** Create git repository
+*** ssh git@101.201.197.193
+*** cd /home/git
+*** mkdir testProject.git
+*** cd testProject.git
+*** git init --bare
+** local git remote 
+
+[remote "origin"]
+	url = ssh://git@101.201.197.193:10086/home/git/zhanghaijin24.github.io.git
+
+* zilongshanren 
+  nvim ~/.gitconfig
+#+BEGIN_SRC  emacs-lisp
+[alias]
+       g = git
+       cm = commit
+       cl = clone
+       br = branch
+       st = status
+       co = checkout
+       sm = submodule
+       ci = commit -a -v
+       unset = reset HEAD
+       throw = reset --hard HEAD
+       throwh = reset --hard HEAD^
+       clr = clean -fdx -f
+       last = log -1       
+#+END_SRC
+
+
+* bilibili: 麦兜搞IT
+** Git基本原理（1）--代码仓库的初始化
+watch -n 1 -d find .
+
+git config --global -l 
+
+git config user.name "zhanghaijin24"
+git config user.email "zhanghaijin24@163.com"
+** Git基本原理(2) --git add 背后到底发生了什么 
+echo "hello git" > hello.txt
+
+tree .git 
+
+git cat-file -t 8d0e41
+#+BEGIN_SRC emacs-lisp
+blob
+#+END_SRC
+
+git cat-file -p 8d0e41
+
+git cat-file -s 8d0e41
+** Git基本原理（3） -- 聊聊blob对象和SHA1哈希
+ls -lh
+** Git基本原理（4） -- 聊聊工作区和索引区
+
+cat .git/index
+
+git ls-files -s 
+** Git基本原理（5） -- git commit背后到底发生了什么
+
+cat .git/refs/heads/master
+
+cat .git/HEAD 
+#+BEGIN_SRC emacs-lisp
+ref: refs/heads/master
+#+END_SRC
+** Git基本原理 (8) -- Branch 和 HEAD
+
+cat .git/HEAD 
+
+cat .git/refs/heads/master 
+
+git cat-file -t 897f
+
+git log
+
+** Git基本原理介绍(9) -- 分支操作的背后
+
+git branch
+
+git branch dev
+
+cat .git/refs/heads/dev 
+
+git checkout dev 
+
+git branch -D dev
+
+git branch --delete dev  
+
+** Git基本原理介绍（10) -- checkout特定的commit
+git checkout d0bde7cd
+
+git checkout -b tmp
+
+git reflog
+
+** Git基本原理介绍(11) -- 聊聊git diff 命令
+
+git diff
+
+git diff --cached
+
+** Git基本原理介绍(12) -- 远程仓库的添加
+
+git remote add origin https://github.com/git2022/git-demo.git
+
+git push -u origin master
+
+cat .git/refs/remotes/origin/master 
+cat .git/refs/heads/master
+
+** Git基本原理介绍(14) -- git对象的压缩
+
+du -h .git/objects
+
+git gc
+
+** Git基本原理介绍(16) -- git pack的压缩
+tree .git/objects
+
+git verify-pack -v .git/objects/pack/
+
+** Git基本原理介绍(17) -- git pack的解压缩
+
+git unpack-objects
+
+mv .git/objects/pack/pack-fb9a08556dd38b12bc61c5799fadd2d16a1c5e27.pack .git/
+
+git unpack-objects < .git/pack-fb9a08556dd38b12bc61c5799fadd2d16a1c5e27.pack
+
+git prune -n
+
+git prune 
+
+git fsck
+
+** Git基本原理介绍(19) -- fast forwrd 合并
+
+git checkout -b bugfix
+
+echo 'test2'>test2.txt
+
+git add test2.txt
+
+git commit -m "2nd commit"
+
+git merge bugfix
+
+cat .git/HEAD
+
+cat .git/ORIG_HEAD
+
+cat .git/refs/heads/master
+
+git reset ORIG_HEAD
+
+** Git基本原理介绍(20) -- 什么是3 way merge
+
+git checkout master
+
+echo 'test3'>test3.txt
+
+git add test3.txt
+
+git commit -m "3rd commit"
+
+git merge bugfix
+
+git cat-file -p 1b86179c
+
+cat .git/refs/heads/bugfix
+
+cat .git/ORIG_HEAD
+
+cat .git/refs/heads/master
+
+** Git基本原理介绍(21) -- 带冲突的3 way merge
+echo 'test'>test.txt
+
+git checkout -b bugfix
+
+git add test.txt
+
+
+git merge bugfix
+
+git commit
+
+** Git基本原理介绍(22) -- 什么是git rebase 
+
+git checkout bugfix
+
+git rebase master
+
+** Git基本原理介绍(23) -- 标签tag到底怎么回事
+** Git基本原理介绍(24) -- 本地分支和远程分支
+
+git branch
+
+git branch -r 
+ 
+* 知乎 整理 commit -amend&rebase
+  up: 乃乎
+  git rebase -i [start-commit] [end-commit]
+
+#+BEGIN_SRC  emacs-lisp
+b95a1b0d2fbc2210aeffd80cbd521fbdf019d0be (HEAD -> master) 4th commit
+295fadd3680a8909220a73ab37703113eff00d44 third commit
+e96c3419b9edb337d24861906de562430dc974db second commit
+da629ffe1dc0d22c418b7e60a4a804b42ab4a313 first commit
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+> git rebase -i da629ffe1dc0d22c418b7e60a4a804b42ab4a313 # first commit 的 commit hash
+> git rebase -i HEAD~3 # 也可以用 HEAD~3 表示 HEAD 往前数三个
+----------------------------
+pick e96c341 second commit
+pick 295fadd third commit
+pick b95a1b0 4th commit
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+pick e96c341 second commit
+f 295fadd third commit
+f b95a1b0 4th commit
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+521bea075647a6e0a0d34d4f6df288bfda9353ad (HEAD -> master) second commit
+da629ffe1dc0d22c418b7e60a4a804b42ab4a313 first commit
+#+END_SRC
+
+
+* 知乎 血泪教训之请不要再轻视Git ---我在工作中是如何使用Git的
+  up： FreeWheelLee (Microsoft 全栈工程师)
+** 设置git alias
+#+BEGIN_SRC  emacs-lisp
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.logl 'log --oneline'
+#+END_SRC   
+
+git logl
+#+BEGIN_SRC  emacs-lisp
+1d23813 (HEAD -> feat-1) develop feat-1 phase 3
+a7e5705 develop feat-1 phase 2
+2685240 init feat-1
+#+END_SRC
+
+git rebase -i HEAD~3
+#+BEGIN_SRC  emacs-lisp
+pick 2685240 init feat-1
+pick a7e5705 develop feat-1 phase 2
+pick 1d23813 develop feat-1 phase 3 
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+pick 2685240 init feat-1
+s a7e5705 develop feat-1 phase 2
+s 1d23813 develop feat-1 phase 3 
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+git pull --rebase origin develop
+#+END_SRC
+
+
+#+BEGIN_SRC  emacs-lisp
+  git reset --soft HEAD^
+
+  git reset --mixed HEAD^
+
+  git reset --hard HEAD^
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+git checkout --readme.txt
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+  git reset HEAD file
+
+  git checkout --file
+#+END_SRC
+
+* 知呼 通过Tag标签回退版本修复bug--Git(一)
+  up: UU他舅
+
+#+BEGIN_SRC  emacs-lisp
+cd "e:\learngit"
+git init
+#+END_SRC  
+
+#+BEGIN_SRC  emacs-lisp
+git config user.name "zhanghaijin24"
+git config user.email "zhanghaijin24@163.com"
+#+END_SRC
+
+(2) 在leangit下新建一个文件a.txt,然后写
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+#+END_SRC
+
+#+BEGIN_SRC  emacs-lisp
+git add a.txt
+git commit -m "第一次发版本"
+#+END_SRC
+
+git log
+http://192.144.237.214/images/2021/12/31/v2-899a7958a91d0541a21d914e79d4af04_720w.jpg
+
+(2)打标签，发布版本之后就要打标签了,命令如下：
+
+#+BEGIN_SRC  emacs-lisp
+git tag -a v1.0 -m "v1.0版本发布"
+#+END_SRC
+
+然后查看所有标签用下面命令：
+#+BEGIN_SRC  emacs-lisp
+git tag
+#+END_SRC
+http://192.144.237.214/images/2021/12/31/v2-bf0e29aed90ccd6e09405bce597d9116_720w.jpg
+
+
+你也可以查看某个标签的详情：
+#+BEGIN_SRC  emacs-lisp
+git show v1.0
+#+END_SRC
+http://192.144.237.214/images/2021/12/31/v2-70625b4a797a68c218cb0afdc676de25_720w.jpg
+(3) 在a.txt中增加一行”第二次发布版本”，然后用
+#+BEGIN_SRC  emacs-lisp
+git add a.txt
+git commit -m "第二次发布版本"
+#+END_SRC
+
+(4) 在a.txt中再增加一行”第三次发布版本”，然后用
+#+BEGIN_SRC  emacs-lisp
+git add a.txt
+git commit -m "第三次发布版本"
+#+END_SRC
+
+
+命令提交，也不需要打标签，这样我们就模拟了在第一次发布版本，打完标签后，我们向前继续开发的过程，a.txt内容如下：
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+第二次发版本
+第三次发版本
+#+END_SRC
+
+
+用 git log命令查看，如下图：
+http://192.144.237.214/images/2021/12/31/v2-1be4c753ea3fdb61e5c0f9f98e001f98_720w.jpg
+
+(5) 到此我们就模拟完成了，这个时候第一次发的版本有个bug，要紧急修复，下面我们来完成这个需求
+
+5 通过标签恢复代码
+(1) 查看标签的详情，找出打标签的那次提交的commit id
+#+BEGIN_SRC  emacs-lisp
+git tag
+git show v1.0
+#+END_SRC
+http://192.144.237.214/images/2021/12/31/v2-1be4c753ea3fdb61e5c0f9f98e001f98_720wc797e158b2dfc2ef.jpg
+commit id这么长记不住怎么办呢？别担心，我们只需要记住前面几位就可以了，这里我们只取前6位：7441b8。Git会根据前面几位自动识别的，当然，你的commit id跟我的肯定是不一样的。
+
+
+(2) 版本回退
+下面我们就通过commit id回到发版本时候的代码去喽:
+#+BEGIN_SRC  emacs-lisp
+git reset --hard 7441b8
+#+END_SRC
+
+注意把7441b8换成你的commid id。回退完毕，再看a.txt:
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+#+END_SRC
+
+(3) 拉取分支
+
+回退版本后，立即拉取分支，这里取名bugfix分支：
+#+BEGIN_SRC  emacs-lisp
+git checkout -b bugfix
+#+END_SRC
+如图所示，我们已经在bugfix分支上了：
+http://192.144.237.214/images/2021/12/31/v2-1fdac8185ba1d56f768d446e80603c1b_720w.jpg
+
+
+git branch
+
+(4) 主干分支立即回到原来的位置
+
+首先，请先回到主干分支上：
+
+#+BEGIN_SRC  emacs-lisp
+git checkout master
+#+END_SRC
+http://192.144.237.214/images/2021/12/31/v2-6a00d7f25157ec0680b2ab2679fc17dd_720w.jpg
+
+回退版本需要commit id，向前进呢，同样也是的。还记得我在第三次提交完毕后，用git log命令查看提交记录吗，现在我们需要第三次提交的commit id，再用git log命令：
+ http://192.144.237.214/images/2021/12/31/v2-2d4b4a046a6ba4c7e128aa6c06937b7c_720w.jpg
+
+ 可以看到只有第一次的提交记录了，因为这个时候版本回退了git log是查不到第三次提交记录的，怎么办呢，怎么才能回去呢？
+别急，这个时候，我们用下面这个命令：
+
+#+BEGIN_SRC  emacs-lisp
+git reflog
+#+END_SRC
+ http://192.144.237.214/images/2021/12/31/v2-3685c3645ff50515ba90826506cb180b_720w.jpg
+
+ 看到了吗，你所有的操作记录都在这儿，这就是git，记录操作。可以看到第三次的commit id是 7358a51。回去喽：
+ 
+#+BEGIN_SRC  emacs-lisp
+git reset --hard 7358a51
+#+END_SRC
+
+再看a.txt:
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+第二次发版本
+第三次发版本
+#+END_SRC
+
+(5) 切换到bugfix分支，修改bug
+
+#+BEGIN_SRC  emacs-lisp
+git checkout bugfix
+#+END_SRC
+
+这时a.txt只有一行文字，因为我们的bugfix分支是回退版本到第一次提交时拉取的分支，接着我们加一行”修复第一次发版本的紧急bug”:
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+修复第一次发版本的紧急bug
+#+END_SRC
+
+接着用命令
+#+BEGIN_SRC  emacs-lisp
+git add a.txt
+git commit -m "修复第一次发版本的紧急bug"
+git tag v2.0
+#+END_SRC
+
+提交这次修改，修改完毕，再打个标签，一般标签的版本要升一级,这样下次再出bug了，就直接从这儿改起，也就可以在合并后直接删除bugfix分支了
+
+(6) 合并到主干上
+在bugfix分支上修复了紧急bug之后，就可以发一个新的版本，之后就要把修复后的代码合并到我们的主干上，不然下次发版本这个bug还是存在的。合并用下面的命令:
+
+#+BEGIN_SRC  emacs-lisp
+git checkout master //先切换到主干上
+git merge bugfix    //再合并修改bug的分支
+#+END_SRC
+
+这个时候，你可以在心里默念，神兽保佑，没有冲突。然而这并没有什么卵用，你念或不念，冲突就在那里，不多不少。这个时候可以用git status 命令查看谁发生了冲突：
+ http://192.144.237.214/images/2021/12/31/v2-4ddfa6a9b00101ff365fe5da1a372cb0_720w.jpg
+ 
+从上图可以看到两个分支都修改了a.txt,这个时候再来看a.txt:
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+<<<<<<< HEAD
+第二次发版本
+第三次发版本
+=======
+修复第一次发版本的紧急bug
+>>>>>>> bugfix
+#+END_SRC
+
+其中<<<<<<Head到======这个是当前分支，也就是master分支的内容，从======到>>>>>>>bugfix，是bugfix分支的内容
+修改冲突很简单啦，把多余的内容去掉就可以了
+
+#+BEGIN_SRC  emacs-lisp
+第一次发版本
+修复第一次发版本的紧急bug
+第二次发版本
+第三次发版本
+#+END_SRC
+
+提交代码就解决冲突了
+
+(7) 推送标签到远程
+在实际开发中我们都是关联了远程仓库的，在提交完代码后我们一般用git push将代码推送到远程仓库中，但是git push命令是不会推送标签的，这点一定要注意
+#+BEGIN_SRC  emacs-lisp
+标签必须手动推送到远程仓库
+#+END_SRC
+
+可以用下面的命令一次推送所有标签到远程：
+#+BEGIN_SRC  emacs-lisp
+git push origin --tags
+#+END_SRC
+
+
+(8) 好了，到这里我们就完成了通过标签修复线上版本的紧急bug，这个时候你就可以删掉本地分支bugfix了，但是不建议你这么做，搞不好线上又出个bug，你就可以直接接着改啦，反正是在本地的分支。
+
+6 总结
+总结一下，通过标签修改bug的步骤如下：
+1.主分支回退到打标签的那次提交
+2.拉取分支bugfix
+3.主分支立即回到最新状态
+4.切换到bugfix分支，修改bug，发版本，打新标签
+5.合并bugfix分支到主干上
+6.手动推送标签到远程

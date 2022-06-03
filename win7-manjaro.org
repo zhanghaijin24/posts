@@ -1,0 +1,35 @@
+---
+title: "dual-system win7 manjaro"
+date: 2022-01-08T16:05:32+08:00
+draft: true
+---
+#+STARTUP: overview
+* lenovo M490
+
+  1,Install win7 format
+  http://192.144.237.214/images/2022/01/08/8ad5083b0f0a199e5fa414ac9198561b.jpg
+  2,Install win7
+  http://192.144.237.214/images/2022/01/08/win7.jpg
+
+  http://192.144.237.214/images/2022/01/08/IMG_8773.jpg
+
+  3,Install manjaro
+  http://192.144.237.214/images/2022/01/08/IMG_8775.jpg
+
+  4,bootloader error
+  http://192.144.237.214/images/2021/12/26/manjaro-bootloader.jpg
+
+  according usb-drive-manjaro
+  
+   http://192.144.237.214/images/2022/01/08/win7-manjaro.jpg
+   #+BEGIN_SRC  emacs-lisp
+     sudo mount /dev/sda5 /mnt
+     sudo mount /dev/sda1 /mnt/boot/efi
+     sudo manjaro-chroot /mnt
+     grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Manjaro --recheck --force --nonvram --removable
+     grub-mkconfig -o /boot/grub/grub.cfg
+   #+END_SRC
+   5, 双系动启动，没有win7引导项
+   #+BEGIN_SRC  emacs-lisp
+     sudo update-grub
+   #+END_SRC

@@ -1,0 +1,20 @@
+---
+title: "flower"
+date: 2022-02-20T16:05:32+08:00
+draft: true
+---
+
+#+STARTUP: showall hidestars
+
+* 玻璃翠
+#+BEGIN_SRC emacs-lisp
+http://192.144.237.214/images/2022/02/19/2ec30aca022cf1eb33546d05ca0f5b4e.png
+#+END_SRC
+
+
+Note for non-git users:
+
+If you do not have git installed, you can download the archive of the latest version of this theme from: https://github.com/theNewDynamic/gohugo-theme-ananke/archive/master.zip
+Extract that .zip file to get a “gohugo-theme-ananke-master” directory.
+Rename that directory to “ananke”, and move it into the “themes/” directory.
+Then, add the theme to the site configuration:

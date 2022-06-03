@@ -1,0 +1,12 @@
+---
+title: "gtd"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+
+* 工作安排
+
+** TODO [#B] git store everyday.
+
+** TODO [#B] 今天从石家庄回家参加冯丹10.4号的婚礼。
+

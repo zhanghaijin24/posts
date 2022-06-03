@@ -1,0 +1,118 @@
+* linux
+** dedipath 后台运行程序
+ <2022-05-08 Sun 17:57>
+nohup ./trojan-go > trojan.log 2 > 1& &
+
+* win10
+** emacs latex sumatrapdf
+#+BEGIN_SRC emacs-org
+"C:\Program Files\Emacs\emacs-28.1\bin\emacsclientw.exe" -n  +%l "%f"
+#+END_SRC
+
+
+* opensuse
+** Install and Configure Samba Server on Opensuse
+https://www.unixmen.com/install-and-configure-samba-server-on-opensuse-13-1/
+#+BEGIN_SRC emacs-lisp
+  su
+  zypper install samba*
+  mkdir /share1
+  chmod -R 777 /share1/
+#+END_SRC
+
+/etc/samba/smb.conf
+#+BEGIN_SRC emacs-lisp
+  [global]
+  [...]
+  passdb backend = tdbsam
+
+  [Full Share]
+  path = /share1
+  writable = yes
+  browsable = yes
+  guest ok = yes
+  guest only = yes
+  create mode = 0777
+  directory mode = 0777
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  systemctl enable smb.service
+  systemctl enable nmb.service
+
+  systemctl start smb.service
+  systemctl start nmb.service
+
+  testparm
+
+  systemctl stop firewalld.service
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  useradd sk
+  passwd sk
+
+  groupadd smbgroup
+  usermod -a -G smbgroup sk
+
+  smbpasswd -a sk
+
+  mkdir /share2
+  chmod -R 755 /share2/
+  chown -R sk:smbgroup /share2
+#+END_SRC
+/etc/samba/smb.conf
+#+BEGIN_SRC emacs-lisp
+  [secure]
+  path = /share2
+  writable = yes
+  browsable = yes
+  guest ok = no
+  valid users = @smbgroup
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  systemctl restart smb.service
+  systemctl restart nmb.service
+
+  testparm
+#+END_SRC
+<2022-06-05 Sun 09:56>
+** openSUSE Tumbleweed配置使用Fcitx5
+https://zhen.bushini.de/24681.html
+#+BEGIN_SRC emacs-lisp
+  sudo zypper rm -u fcitx
+  sudo zypper ar https://download.opensuse.org/repositories/M17N/openSUSE_Tumbleweed/M17N.repo
+  sudo zypper ref
+  sudo zypper in fcitx5
+  sudo zypper in fcitx5-rime
+  sudo zypper in fcitx5-chinese-addons
+  sudo zypper in fcitx5-configtool
+
+#+END_SRC
+<2022-06-05 Sun 09:32>
+** keyboard input evtest udev
+/etc/udev/hwdb.d/99-personal-kbd.hwdb
+#+BEGIN_SRC emacs-lisp
+evdev:atkbd:dmi:*
+ KEYBOARD_KEY_3a=leftctrl
+ KEYBOARD_KEY_1d=leftalt
+ KEYBOARD_KEY_38=backspace
+#+END_SRC 
+<2022-06-05 Sun 00:36>
+** opensuse mount to macos
+#+BEGIN_SRC emacs-org
+mount -t cifs //172.20.10.3/posts /mnt/share -o username=david,noserverino
+#+END_SRC
+<2022-06-05 Sun 00:23>
+** latex chinese to pdf
+#+BEGIN_SRC emacs-lisp
+\documentclass[fontset=windows]{ctexart}
+#+END_SRC
+<2022-06-05 Sun 00:03>
+** latex chinese CJK
+#+BEGIN_SRC emacs-lisp
+  \usepackage{xeCJK}
+  \setCJKmainfont{微软雅黑}
+#+END_SRC
+<2022-06-04 Sat 23:57>

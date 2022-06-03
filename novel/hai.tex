@@ -1,0 +1,99 @@
+\documentclass[fontset=windows]{ctexart}
+
+\usepackage{tikz}
+\usetikzlibrary[mindmap, backgrounds, calc]
+
+\begin{document}
+\section{葛仲英}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  } 
+  ]
+  \node (0) {葛仲英}
+  child { node (1) {{\Large{华铁眉}}} child { node {孙素兰}}}
+  child { node (2) {王莲生} child { node {张蕙贞}}}
+  child { node (3) {高亚白} child { node {李浣芳}}}
+  child { node (4) {尹痴鸳} child { node {林翠芬}}}
+  child { node {吴雪香} child { node {小妺姐}}}
+  ;
+
+  \begin{pgfonlayer}{background}
+    \draw [concept connection]
+  (1) edge (2)
+  (3) edge (4)
+  ;
+ \end{pgfonlayer}
+ 
+ \node[annotation] at ($(1.south) + (-1.5,1.25)$)
+ {{\LARGE{主客}}};
+ \node[annotation] at ($(2.south) + (-2.25,1.25)$)
+ {{\Large{好友}}};
+ \node[annotation] at ($(3.south) + (-1.15,3)$)
+ {{\Large{两江才子}}};
+\end{tikzpicture}
+
+\section{高亚白}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  } 
+  ]
+  \node (0) {高亚白}
+  child { node (1) {尹痴鸳} child { node {林翠芬}}}
+  child { node (2) {华铁眉} child { node {孙素兰}}}
+  child { node (3) {葛仲英} child { node {吴雪香}}}
+  child { node (4) {钱子刚} child { node {黄翠凤}}}
+  child { node (5) {陶玉甫} child { node {李浣芳}}}  
+  child { node {姚文君}}
+  ;
+
+  \begin{pgfonlayer}{background}
+    \draw [concept connection]
+  (4) edge (5)
+  ;
+ \end{pgfonlayer}
+ 
+ \node[annotation] at ($(4.south) + (-2,2)$)
+ {{\LARGE{介绍人}}};
+\end{tikzpicture}
+
+\end{document}

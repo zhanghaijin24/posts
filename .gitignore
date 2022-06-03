@@ -1,0 +1,6 @@
+.#emacs.org
+.#git.org
+./LifeStyle/*.aux
+./LifeStyle/*.log
+./work/*.aux
+./work/*.log

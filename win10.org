@@ -1,0 +1,8 @@
+---
+title: "win10"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+
+* win10 Samba
+https://os.51cto.com/art/202104/658846.htm

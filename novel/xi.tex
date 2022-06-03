@@ -1,0 +1,120 @@
+\documentclass[fontset=windows]{ctexart}
+
+\usepackage{tikz}
+\usetikzlibrary[mindmap, backgrounds, calc]
+
+\begin{document}
+\section{天庭}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+  \node [grow = down]{玉帝}
+  [clockwise from = -90]
+  child
+  {
+    node {太上老君}
+    child
+    {
+      node {佛派}
+      child
+    {
+      node {燃灯}
+      child
+      {
+       node {唐僧} 
+      }
+    }
+    child
+    {
+      node {如来}
+      child
+      {
+       node {唐僧十一世前} 
+      }
+    }
+    child
+    {
+     node {弥勒} 
+    }
+  }
+  child
+  {
+    node {观音}
+    [clockwise from = -180]
+    child
+    {
+     node {小白龙} 
+    }
+  }
+  child
+  { node {孙悟空}}
+  child
+  {
+    node {猪八戒}
+  }
+}
+child
+{
+  node at (-2,4.75) {元始天尊}
+}
+child
+{
+  node at (9,-1) {灵宝天尊}
+}
+child
+{
+  node {沙僧}
+}
+  ;
+  
+\end{tikzpicture}
+\section{如来}
+\begin{tikzpicture}
+  [
+  mindmap,
+  concept color = red!30,
+  every node/.style = {concept},
+  grow cyclic,
+  level 1/.append style = {
+    concept color = red!20,
+    level distance = 4.5cm,
+    sibling angle = 60
+  },
+  level 2/.append style = {
+    concept color = green!10,
+    level distance = 3cm,
+    sibling angle = 45
+  },
+  concept connection/.append style = {
+    color = blue!70
+  },
+    every annotation/.append style = {
+    fill = green!20,
+    text width = 0.6cm
+  }
+  ]
+
+
+\end{tikzpicture}
+\end{document}

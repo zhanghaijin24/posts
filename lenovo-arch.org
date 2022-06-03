@@ -1,0 +1,36 @@
+---
+title: "lenovo-arch"
+date: 2021-07-23T16:05:32+08:00
+draft: true
+---
+* 联想进入bios以及u盘启动项
+- 按F1进入bios;按F12进入u盘引导项
+
+
+
+
+
+* pacman下载安全问题
+sudo nvim /etc/pacman.conf
+#+BEGIN_SRC emacs-lisp
+SigLevel = Never
+#+END_SRC
+
+* 联想电脑archlinux 安装网卡驱动
+
+sudo pacman -S yay
+yay -S broadcom-wl
+reboot
+
+* archlinux 安装声卡
+sudo pacman -S alsa alsa-utils kmix
+amixer set Master unmute
+
+* archlinux下制作manjaro启动U盘
+lsblk
+sudo umount /dev/sdc1
+sudo mkfs.vfat -F32 -I /dev/sdc
+sudo dd if=./manjaro-kde-20.2.1-210103-linux59.iso of=/dev/sdc bs=1M status=progress
+
+
+

@@ -1,0 +1,45 @@
+---
+title: "Liuyang"
+date: 2022-02-20T13:35:57+08:00
+draft: true
+---
+
+* 2022-2.6 和杨艳在她舅娘家第一次见面，吉祥镇，和小红孃孃
+ - 杨艳个子高高的 
+
+* 2022-11.19
+第二次见面，在春熙路
+
+1,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/02/20/liuyang.1.jpg
+
+
+2,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/02/20/liuyang.2.jpg
+
+3,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/02/20/liuyang.3.jpg
+
+* 2022-3.12
+和杨艳第三次见面，逛春熙路，看电影。
+1,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/03/13/B6F98123-7BB4-477A-9B04-6488BEBF19CC.jpg
+
+2,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/03/13/9AB6999B-4921-448E-A5A5-36ACDA391A8A.jpg
+
+3,
+#+CAPTION: date
+#+ATTR_HTML: :width 500px
+http://192.144.237.214/images/2022/03/13/ECD0BC7D-A236-4575-8E07-048F69DF4079.png
+
